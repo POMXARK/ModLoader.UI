@@ -7,28 +7,45 @@
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
         x:Class="ModLoader.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="ModLoader">
+        Title="ModLoader"       
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+        ExtendClientAreaToDecorationsHint="True"
+        >
 
-  <ScrollViewer>
-    <WrapPanel HorizontalAlignment="Center">
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-        <v:TilesUserControl/>
-    </WrapPanel>
-  </ScrollViewer>
+  <Panel>
+    <ExperimentalAcrylicBorder IsHitTestVisible="False">
+      <ExperimentalAcrylicBorder.Material>
+        <ExperimentalAcrylicMaterial
+            BackgroundSource="Digger"
+            TintColor="Black"
+            TintOpacity="1"
+            MaterialOpacity="0.65" />
+      </ExperimentalAcrylicBorder.Material>
+    </ExperimentalAcrylicBorder>
+    <Grid RowDefinitions="30,*">
+      <ScrollViewer Grid.Row="1">
+        <WrapPanel HorizontalAlignment="Center">
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+          <v:TilesUserControl/>
+        </WrapPanel>
+      </ScrollViewer>
+    </Grid>
+  </Panel>
 </Window>

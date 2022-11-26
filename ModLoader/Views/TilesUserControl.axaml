@@ -4,13 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ModLoader.Views.TilesUserControl">
-  <Border CornerRadius="6" BorderBrush="Gray" Background="LightGray" BorderThickness="2">
-    <Grid RowDefinitions="80*,20*" Background="Beige" Width="230" Height="240">
-      <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5 5 5 5"/>
-      <Grid Grid.Row="1" ColumnDefinitions="Auto,*,Auto" Margin="5 5 5 5">
-        <Button Content="Подробнее"/>
-        <Button Content="Скачать" Grid.Column="2"/>
-      </Grid>
+  <Border  BorderBrush="CadetBlue"  BorderThickness="2">
+    <Grid RowDefinitions="80*,10*" Width="230" Height="230">
+      <Panel>
+        <Panel.Styles>
+          <Style Selector="Button#Tale /template/ ContentPresenter">
+            <Setter Property="Opacity" Value="1.0"/>
+          </Style>
+          <Style Selector=":pointerover  /template/ ContentPresenter">
+            <!--<Setter Property="Background" Value="Red"/>-->
+            <Setter Property="Opacity" Value="1.0"/>
+          </Style>
+          <Style Selector="TextBlock:pointerover">
+            <Setter Property="Opacity" Value="1.0"/>
+          </Style>
+          <Style Selector="Button#Del /template/ ContentPresenter">
+            <Setter Property="Opacity" Value="0.2"/>
+          </Style>
+          <Style Selector="Panel > TextBlock">
+            <Setter Property="Opacity" Value="0.5"/>
+          </Style>
+          <Style Selector="Panel:pointerover > TextBlock">
+            <Setter Property="Opacity" Value="1.0"/>
+          </Style>
+        </Panel.Styles>
+        <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5 5 5 5"/>
+        <Button x:Name="Del" Content="Удалить" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5 10 10 5"/>
+        <TextBlock x:Name="Tale" Text="Semper feugiat nibh sed pulvinar proin gravida. Morbi tincidunt augue interdum velit euismod in pellentesque. In massa tempor nec feugiat nisl pretium. Diam sollicitudin tempor id eu nisl nunc. Ornare suspendisse sed nisi lacus sed viverra tellus. Aliquet enim tortor at auctor urna nunc id. Mattis vulputate enim nulla aliquet porttitor lacus. Congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque. Elementum sagittis vitae et leo duis ut diam. Libero enim sed faucibus turpis. Purus semper eget duis at tellus at urna."   
+          VerticalAlignment="Bottom" Margin="15 15 15 15"
+          TextWrapping="Wrap" MaxLines="8" IsHitTestVisible="False"          
+          />
+        <Image/>
+      </Panel>
+      <Label Content="Название" Grid.Row="1" HorizontalContentAlignment="Center"/>
     </Grid>
   </Border>
 </UserControl>

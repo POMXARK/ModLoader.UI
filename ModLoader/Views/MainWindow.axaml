@@ -26,24 +26,22 @@
     <Grid RowDefinitions="30,*">
       <ScrollViewer Grid.Row="1">
         <WrapPanel HorizontalAlignment="Center">
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
-          <v:TilesUserControl/>
+
+          <ItemsControl Margin="0 40 0 0" Items="{Binding Mods}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <WrapPanel />
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <v:TilesUserControl/>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+          
+
         </WrapPanel>
       </ScrollViewer>
     </Grid>

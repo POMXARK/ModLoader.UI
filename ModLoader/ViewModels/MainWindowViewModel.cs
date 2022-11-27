@@ -1,5 +1,7 @@
 ﻿using Avalonia.Media.Imaging;
+using ModLoader.Models;
 using ReactiveUI.Fody.Helpers;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -7,11 +9,25 @@ namespace ModLoader.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        private Database _db;
+
         [Reactive] Bitmap? Cover { get; set; }
 
-        public MainWindowViewModel()
+        ObservableCollection<Mod> Mods { get; } = new();
+
+        public MainWindowViewModel(Database db)
         {
+            _db = db;
+
+            foreach (var item in _db.Mods)
+            {
+                Mods.Add(item);
+            }
+
+
+
             Task.Run(() => LoadCover());
+
         }
 
 

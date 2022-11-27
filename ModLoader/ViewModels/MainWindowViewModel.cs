@@ -1,8 +1,11 @@
 ﻿using Avalonia.Media.Imaging;
+using Microsoft.EntityFrameworkCore;
 using ModLoader.Models;
 using ReactiveUI.Fody.Helpers;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ModLoader.ViewModels
@@ -11,37 +14,42 @@ namespace ModLoader.ViewModels
     {
         private Database _db;
 
-        [Reactive] Bitmap? Cover { get; set; }
-
         ObservableCollection<Mod> Mods { get; } = new();
 
         public MainWindowViewModel(Database db)
         {
             _db = db;
 
-            foreach (var item in _db.Mods)
+             LoadMods();
+        }
+
+
+        public void LoadMods()
+        {
+            foreach (var item in _db.Mods.Where(x => x.isDelited == false))
             {
                 Mods.Add(item);
             }
-
-
-
-            Task.Run(() => LoadCover());
-
         }
 
-
-        public async Task<Stream> LoadCoverBitmapAsync()
+        public async void UpdateItemCommand(Mod item)
         {
-           return File.OpenRead("C:\\test.png");
-        }
-
-        public async Task LoadCover()
-        {
-            await using (var imageStream = await LoadCoverBitmapAsync())
+            await Task.Run(() =>
             {
-                Cover = await Task.Run(() => Bitmap.DecodeToWidth(imageStream, 400));
-            }
+                using (var context = new Database())
+                {
+                    //Thread.Sleep(1500); // test async
+                    item.isDelited = !item.isDelited;
+                    context.Mods.Attach(item);
+                    context.Entry(item).State = EntityState.Modified;
+                    context.SaveChangesAsync();
+                }
+
+            });
+
+            Mods.Clear();
+
+            LoadMods();
         }
     }
 }

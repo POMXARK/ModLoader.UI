@@ -40,9 +40,8 @@
               </DataTemplate>
             </ItemsControl.ItemTemplate>
           </ItemsControl>
-          
-
         </WrapPanel>
+        
       </ScrollViewer>
     </Grid>
   </Panel>

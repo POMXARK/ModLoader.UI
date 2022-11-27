@@ -24,25 +24,51 @@
       </ExperimentalAcrylicBorder.Material>
     </ExperimentalAcrylicBorder>
     <Grid RowDefinitions="30,*">
-      <ScrollViewer Grid.Row="1">
-        <WrapPanel HorizontalAlignment="Center">
+      <TabControl Grid.Row="1">
+        <TabItem Header="Моды">
+          <ScrollViewer>
+            <WrapPanel HorizontalAlignment="Center">
 
-          <ItemsControl Margin="0 40 0 0" Items="{Binding Mods}">
-            <ItemsControl.ItemsPanel>
-              <ItemsPanelTemplate>
-                <WrapPanel />
-              </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+              <ItemsControl Margin="0 40 0 0" Items="{Binding Mods}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <WrapPanel />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
 
-            <ItemsControl.ItemTemplate>
-              <DataTemplate>
-                <v:TilesUserControl/>
-              </DataTemplate>
-            </ItemsControl.ItemTemplate>
-          </ItemsControl>
-        </WrapPanel>
-        
-      </ScrollViewer>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <v:TilesUserControl/>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </WrapPanel>
+
+          </ScrollViewer>
+          </TabItem>
+        <TabItem Header="Удалено">
+          <ScrollViewer>
+            <WrapPanel HorizontalAlignment="Center">
+
+              <ItemsControl Margin="0 40 0 0" Items="{Binding DelitedMods}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <WrapPanel />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <v:TilesDelitedUserControl/>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </WrapPanel>
+
+          </ScrollViewer>
+        </TabItem>
+
+      </TabControl>
     </Grid>
   </Panel>
 </Window>

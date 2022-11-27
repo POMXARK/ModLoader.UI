@@ -15,6 +15,7 @@ namespace ModLoader.ViewModels
         private Database _db;
 
         ObservableCollection<Mod> Mods { get; } = new();
+        ObservableCollection<Mod> DelitedMods { get; } = new();
 
         public MainWindowViewModel(Database db)
         {
@@ -26,10 +27,8 @@ namespace ModLoader.ViewModels
 
         public void LoadMods()
         {
-            foreach (var item in _db.Mods.Where(x => x.isDelited == false))
-            {
-                Mods.Add(item);
-            }
+            foreach (var item in _db.Mods.Where(x => x.isDelited)) DelitedMods.Add(item);
+            foreach (var item in _db.Mods.Where(x => !x.isDelited)) Mods.Add(item);
         }
 
         public async void UpdateItemCommand(Mod item)
@@ -48,7 +47,7 @@ namespace ModLoader.ViewModels
             });
 
             Mods.Clear();
-
+            DelitedMods.Clear();
             LoadMods();
         }
     }

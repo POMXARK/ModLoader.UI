@@ -5,7 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ModLoader.Views.TilesUserControl">
   <Border  BorderBrush="CadetBlue"  BorderThickness="2">
-    <Grid RowDefinitions="80*,10*" Width="230" Height="230">
+    <Grid RowDefinitions="60*,40*" Width="230" Height="230">
       <Panel>
         <Panel.Styles>
           <Style Selector="Button#Tale /template/ ContentPresenter">
@@ -28,15 +28,20 @@
             <Setter Property="Opacity" Value="1.0"/>
           </Style>
         </Panel.Styles>
+        <Image  Stretch="Uniform" Source="{Binding Cover}" />
         <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5 5 5 5"/>
-        <Button x:Name="Del" Content="Удалить" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5 10 10 5"/>
-        <TextBlock x:Name="Tale" Text="Semper feugiat nibh sed pulvinar proin gravida. Morbi tincidunt augue interdum velit euismod in pellentesque. In massa tempor nec feugiat nisl pretium. Diam sollicitudin tempor id eu nisl nunc. Ornare suspendisse sed nisi lacus sed viverra tellus. Aliquet enim tortor at auctor urna nunc id. Mattis vulputate enim nulla aliquet porttitor lacus. Congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque. Elementum sagittis vitae et leo duis ut diam. Libero enim sed faucibus turpis. Purus semper eget duis at tellus at urna."   
-          VerticalAlignment="Bottom" Margin="15 15 15 15"
-          TextWrapping="Wrap" MaxLines="8" IsHitTestVisible="False"          
-          />
+        <Button x:Name="Del" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5 10 10 5" >
+          <PathIcon Data="{StaticResource delete_regular}" />
+        </Button>
         <Image/>
       </Panel>
-      <Label Content="Название" Grid.Row="1" HorizontalContentAlignment="Center"/>
+      <StackPanel Grid.Row="1">
+        <Label Content="Название"  HorizontalContentAlignment="Center"/>
+        <TextBlock x:Name="Tale" Text="Semper feugiat nibh sed pulvinar proin gravida. Morbi tincidunt augue interdum velit euismod in pellentesque. In massa tempor nec feugiat nisl pretium. Diam sollicitudin tempor id eu nisl nunc. Ornare suspendisse sed nisi lacus sed viverra tellus. Aliquet enim tortor at auctor urna nunc id. Mattis vulputate enim nulla aliquet porttitor lacus. Congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque. Elementum sagittis vitae et leo duis ut diam. Libero enim sed faucibus turpis. Purus semper eget duis at tellus at urna."
+    VerticalAlignment="Bottom" Margin="15 15 15 15"
+    TextWrapping="Wrap" MaxLines="3" IsHitTestVisible="False"
+            />
+      </StackPanel>
     </Grid>
   </Border>
 </UserControl>

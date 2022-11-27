@@ -8,5 +8,6 @@
 
     <Application.Styles>
         <FluentTheme Mode="Dark"/>
+      <StyleInclude Source="avares://ModLoader/Icons.axaml" />
     </Application.Styles>
 </Application>

@@ -36,4 +36,9 @@
 	<PackageReference Include="ReactiveUI.Fody" Version="18.4.1" />
 	<PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\TilesSearchUserControl.axaml.cs">
+      <DependentUpon>TilesSearchUserControl.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

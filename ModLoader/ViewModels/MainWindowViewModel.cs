@@ -31,11 +31,24 @@ namespace ModLoader.ViewModels
         ObservableCollection<Mod> ResultMods { get; } = new();
         ObservableCollection<Mod> ResultDelitedMods { get; } = new();
 
+        ObservableCollection<WebResource> WebResources { get; } = new();
+
+        ObservableCollection<Pack> Packs { get; } = new();
+
+
+
         public MainWindowViewModel(Database db)
         {
             _db = db;
 
-           this.WhenAnyValue(x => x.SearchText)
+            //foreach (var item in _db.WebResources.ToList()) WebResources.Add(item);
+
+            //var test =
+            //    _db.WebResources.Include(x => x.Mods).ToList();
+
+
+
+            this.WhenAnyValue(x => x.SearchText)
                 .Throttle(TimeSpan.FromSeconds(0.35), RxApp.TaskpoolScheduler)
                 .DistinctUntilChanged()
                 .Where(x => {
@@ -64,8 +77,14 @@ namespace ModLoader.ViewModels
 
         public void LoadMods()
         {
+            foreach (var item in Packs.ToList()) Packs.Remove(item);
+            foreach (var item in _db.Packs.ToList()) Packs.Add(item);
+
             foreach (var item in ResultMods.ToList()) ResultMods.Remove(item);
             foreach (var item in ResultDelitedMods.ToList()) ResultDelitedMods.Remove(item);
+
+            foreach (var item in Mods.ToList()) Mods.Remove(item);
+            foreach (var item in DelitedMods.ToList()) DelitedMods.Remove(item);
 
             foreach (var item in _db.Mods.Where(x => x.isDelited)) DelitedMods.Add(item);
             foreach (var item in _db.Mods.Where(x => !x.isDelited)) Mods.Add(item);

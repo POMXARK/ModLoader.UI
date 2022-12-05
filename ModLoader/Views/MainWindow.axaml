@@ -32,7 +32,7 @@
           <ColumnDefinition Width="*" MinWidth="300"/>
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Column="0" Margin="0 40 0 0">
-          <ListBox Items="{Binding Packs}">
+          <ListBox Items="{Binding Packs}" SelectedItem="{Binding SelectedPack}">
             <ListBox.ItemTemplate>
               <DataTemplate>
                 <TextBlock Text="{Binding Name}"/>
@@ -50,7 +50,7 @@
               <ScrollViewer>
                 <WrapPanel HorizontalAlignment="Center">
 
-                  <ItemsControl Margin="0 40 0 0" Items="{Binding ResultMods}">
+                  <ItemsControl Margin="0 40 0 0" Items="{Binding SelectedResultMods}">
                     <ItemsControl.ItemsPanel>
                       <ItemsPanelTemplate>
                         <WrapPanel />
@@ -73,7 +73,7 @@
               <ScrollViewer>
                 <WrapPanel HorizontalAlignment="Center">
 
-                  <ItemsControl Margin="0 40 0 0" Items="{Binding ResultDelitedMods}">
+                  <ItemsControl Margin="0 40 0 0" Items="{Binding SelectedResultDelitedMods}">
                     <ItemsControl.ItemsPanel>
                       <ItemsPanelTemplate>
                         <WrapPanel />

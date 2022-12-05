@@ -23,6 +23,8 @@ namespace ModLoader
         public DbSet<Mod> Mods { get; set; }
         public DbSet<WebResource> WebResources { get; set; }
         public DbSet<Pack> Packs { get; set; }
+        //public DbSet<ModPack> ModPack { get; set; }
+
 
         public string DbPath { get; }
 

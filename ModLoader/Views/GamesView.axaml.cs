@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace ModLoader.Views
 {
-    public partial class TilesUserControl : UserControl
+    public partial class GamesView : UserControl
     {
-        public TilesUserControl()
+        public GamesView()
         {
             InitializeComponent();
         }

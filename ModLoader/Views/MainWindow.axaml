@@ -11,6 +11,6 @@
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent"
         ExtendClientAreaToDecorationsHint="True"
-        Content="{Binding Content}"
         >
+  <v:ModsView/>
 </Window>

@@ -3,6 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:v="using:ModLoader.Views"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ModLoader.Views.ModsView">
   <Panel>
@@ -27,7 +29,7 @@
         <DockPanel Name="PackOptions" Grid.Column="0" Margin="0 40 0 0">
           <StackPanel>
             
-            <Expander Header="Игра" HorizontalAlignment="Stretch">
+            <Expander Header="Game" HorizontalAlignment="Stretch">
               <StackPanel>
                 <CheckBox Content="Sims 4"/>
                 <CheckBox Content="Sryrim"/>
@@ -35,7 +37,7 @@
               </StackPanel>
             </Expander>
 
-            <Expander Header="Коллекция" HorizontalAlignment="Stretch">
+            <Expander Header="Collection" HorizontalAlignment="Stretch">
               <StackPanel>
                 <CheckBox Content="Sims 4"/>
                 <CheckBox Content="Sryrim"/>
@@ -43,7 +45,7 @@
               </StackPanel>
             </Expander>
 
-            <Expander Header="Версия" HorizontalAlignment="Stretch">
+            <Expander Header="Version" HorizontalAlignment="Stretch">
               <StackPanel>
                 <CheckBox Content="Sims 4"/>
                 <CheckBox Content="Sryrim"/>
@@ -51,7 +53,7 @@
               </StackPanel>
             </Expander>
             
-            <Expander Header="Сборка" HorizontalAlignment="Stretch">
+            <Expander Header="Pack" HorizontalAlignment="Stretch">
                 <ListBox Items="{Binding Packs}" SelectedItem="{Binding SelectedPack}">
                   <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -68,7 +70,7 @@
 
 
         <TabControl Grid.Column="2" Grid.Row="1">
-          <TabItem Header="Моды">
+          <TabItem Header="Mods">
             <DockPanel>
               <v:TilesSearchUserControl DockPanel.Dock="Top"/>
               <ScrollViewer>
@@ -91,7 +93,7 @@
               </ScrollViewer>
             </DockPanel>
           </TabItem>
-          <TabItem Header="Удалено">
+          <TabItem Header="Delited">
             <DockPanel>
               <v:TilesSearchUserControl DockPanel.Dock="Top"/>
               <ScrollViewer>

@@ -4,7 +4,7 @@ using ReactiveUI;
 
 namespace ModLoader.ViewModels
 {
-	public class TilesViewModel : ReactiveObject
+	public class TilesViewModel : ViewModelBase
 	{
 	}
 }

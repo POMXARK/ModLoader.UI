@@ -3,9 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:ext="using:ModLoader.Extensions"
-             xmlns:vm="using:ModLoader.ViewModels"
-             xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:views="clr-namespace:ModLoader.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ModLoader.Views.TilesView">
 
@@ -39,7 +37,7 @@
         </Panel.Styles>
         <Image  Stretch="Uniform" Source="{Binding Icon, Converter={StaticResource variableImage}}" />
         <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5 5 5 5"/>
-        <Button Command="{Binding $parent[Window].DataContext.UpdateItemCommand}" CommandParameter="{Binding}" x:Name="Del" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5 10 10 5" >
+        <Button Command="{Binding $parent[views:ModsView].DataContext.UpdateItemCommand}" CommandParameter="{Binding}" x:Name="Del" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5 10 10 5" >
           <PathIcon Data="{StaticResource delete_regular}" />
         </Button>
         <Image/>

@@ -59,8 +59,12 @@ namespace ModLoader.ViewModels
             this.WhenAnyValue(x => x.SearchText)
                 .Throttle(TimeSpan.FromSeconds(0.35), RxApp.TaskpoolScheduler)
                 .DistinctUntilChanged()
-                .Where(x => {
-                    if (!string.IsNullOrEmpty(x)) return true; else LoadMods();
+                .Where(x =>
+                {
+                    if (!string.IsNullOrEmpty(x)) return true;
+                    
+                    LoadMods();
+                    if (SelectedPack != null) FilterPack(SelectedPack.Id);
                     return false;
                 })
                 .Subscribe(search => {
@@ -73,11 +77,11 @@ namespace ModLoader.ViewModels
         {
             IsBusy = true;
 
-            foreach (var item in ResultMods.ToList()) ResultMods.Remove(item);
-            foreach (var item in ResultDelitedMods.ToList()) ResultDelitedMods.Remove(item);
-
-            foreach (var item in Mods.Where(x => x.Name.IndexOf(search) != -1)) ResultMods.Add(item);
-            foreach (var item in DelitedMods.Where(x => x.Name.IndexOf(search) != -1)) ResultDelitedMods.Add(item);
+            foreach (var item in SelectedResultMods.ToList()) SelectedResultMods.Remove(item);
+            foreach (var item in SelectedResultDelitedMods.ToList()) SelectedResultDelitedMods.Remove(item);
+            
+            foreach (var item in Mods.Where(x => x.Name.IndexOf(search) != -1)) SelectedResultMods.Add(item);
+            foreach (var item in DelitedMods.Where(x => x.Name.IndexOf(search) != -1)) SelectedResultDelitedMods.Add(item);
 
             IsBusy = false;
         }
@@ -92,9 +96,7 @@ namespace ModLoader.ViewModels
             foreach (var item in DelitedMods.ToList()) DelitedMods.Remove(item);
 
             var ModPack = _db.Mods.Include(x => x.Packs).ToList();
-
-            foreach (var item in ModPack.Where(x => !x.isDelited)) Mods.Add(item);
-
+            
             foreach (var item in ModPack.Where(x => x.isDelited)) DelitedMods.Add(item);
             foreach (var item in ModPack.Where(x => !x.isDelited)) Mods.Add(item);
             foreach (var item in ModPack.Where(x => x.isDelited)) ResultDelitedMods.Add(item);
